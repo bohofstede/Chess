@@ -1,2 +1,2 @@
 # Great Chess Game
-Hey bo, how you doing? 
+Hey Bo, how you doing? 
