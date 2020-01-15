@@ -2,7 +2,7 @@
 
 
 <html>
-
+<meta charset="UTF-8" lang="en">
 <head>
     <title>Chess game</title>
 
@@ -18,18 +18,16 @@
 
     <header>
 
-        <h1>This is my chess board</h1>
-        
+        <div id="Title"><h1>Just Another Generic Chess Game...</h1></div>
+
     </header>
 
-    
 
-    <main>
         <table class="chessboard">
             <tr class="chessboard">
                 <td class="chessboard"></td>
                 <td class="chessboard">  <span ondragstart="drag(event)" draggable="true" id="a3" ondrop="drop(event)" ondragover="allowDrop(event)">&#9812</span>   </td>
-                <td class="chessboard"  draggable="true" id="a4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>  </td>
+                <td class="chessboard"  draggable="true" id="a4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                 <td class="chessboard" draggable="true" id="a5" ondrop="drop(event)"   ondragover="allowDrop(event)" >  </td>
                 <td class="chessboard" draggable="true" id="a6" ondrop="drop(event)"    ondragover="allowDrop(event)"> </td>
                 <td class="chessboard"></td>
@@ -111,9 +109,12 @@
 
 
 
-    </main>
 
-
+    <div id="chessMenu">
+        <button id="forfeitButton" onclick="window.location.href = './splash.html'">
+            I give up
+        </button>
+    </div>
 
 
 

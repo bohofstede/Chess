@@ -7,6 +7,40 @@ a {
   color: #00B7FF;
 } */
 
+body {
+  background-color: #eeeeee;
+  font-family: "Gadugi", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#chessMenu {
+  /*padding: 0 auto;*/
+}
+
+#Title {
+  color: #121212;
+  background-color: #CCCCCC;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+
+}
+
+#forfeitButton {
+  margin: 0 auto 50px auto;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Gadugi", sans-serif;
+  width: 250px;
+  height: 50px;
+  position: relative;
+  display: block;
+  background-color: #CCCCCC;
+  border: 1px solid #121212;
+}
+
 
 table.chessboard {
   margin: 80px auto;
@@ -25,7 +59,11 @@ td.chessboard {
   border: 2px solid #333; /* */
 }
 
+table.empty {
+  background-color: #EEEEEE;
+}
+
 tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
 tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
-  background: white;
-}
+   background: white;
+ }
