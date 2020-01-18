@@ -9,22 +9,30 @@
    
 
     <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js">
+        //var Chess = require('./chess').Chess;
+        var chess = new Chess();
+
+    </script>
     <script src="javascripts/game.js"></script>
+    <script src="javascripts/ui.js"></script>
+
+
 </head>
 
 <body>
 
     <header>
 
-        <div id="Title"><h1>Just Another Generic Chess Game...</h1></div>
+        <div id="Title"><h1>Stupid Standard Chess</h1></div>
 
     </header>
 
 
-        <table class="chessboard">
-            <tr class="chessboard">
+        <button onclick="Board('white');">Make Board</button>
+        <button onclick="Board.prototype.updateBoard(chess.fen());">Update Board</button>
+        <table id="chessboard">
+            <!--<tr class="chessboard">
                 <td class="chessboard"></td>
                 <td class="chessboard">  <span ondragstart="drag(event)" draggable="true" id="a3" ondrop="drop(event)" ondragover="allowDrop(event)">&#9812</span>   </td>
                 <td class="chessboard"  draggable="true" id="a4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -103,8 +111,8 @@
                 <td class="chessboard"></td>
                 <td class="chessboard"></td>
                 <td class="chessboard"></td>
-            </tr>
-            </table>
+            </tr>-->
+        </table>
 
 
 
@@ -120,6 +128,7 @@
 
 
 </body>
+
 
 
 </html>
