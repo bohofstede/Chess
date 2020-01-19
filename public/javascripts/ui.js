@@ -5,7 +5,8 @@
 // eslint-disable-next-line no-unused-vars
 
 
-//create the chessboard without the pieces
+
+
 
 // Makes a chessboard (excl. pieces)
     function Board(playerType) {
@@ -20,7 +21,7 @@
                 let cell = document.createElement('td');
                 var column = 8 - i;
                 var idToString = String.fromCharCode(97 + j) + column;
-                cell.setAttribute("class", "chessboard");
+                cell.setAttribute("class", "chessboard " + playerType);
                 row.appendChild(cell);
 
                 // color
@@ -31,8 +32,8 @@
 
                 cell.setAttribute('ondragstart', 'drag(event)');
                 cell.setAttribute('draggable', 'true');
-                cell.setAttribute('id', 'idToString');  // id
-                cell.setAttribute('ondrop', 'drop(event');
+                cell.setAttribute('id', idToString);  // id
+                cell.setAttribute('ondrop', 'drop(event)');
                 cell.setAttribute('ondragover', 'allowDrop(event)');
                 // cell.appendChild(content);
                 // let text = document.createTextNode(idToString); // to edit the value inside each cell
@@ -51,17 +52,17 @@
 
     Board.prototype.updateBoard = function (fen) {
         //function takes in the 2d board from the library and visualises the chessboard
-        var chessboard = document.getElementById('chessboard');
-//////////////////////
-        var tokens = fen.split(/\s+/);
-        var position = tokens[0];
-        // var square = 0;
+        let chessboard = document.getElementById('chessboard');
 
-        var row = 0;
-        var cell = -1;
+        let tokens = fen.split(/\s+/);
+        let position = tokens[0];
 
-        for (var i = 0; i < position.length; i++) {
-            var piece = position.charAt(i);
+
+        let row = 0;
+        let cell = -1;
+
+        for (let i = 0; i < position.length; i++) {
+            let piece = position.charAt(i);
 
             if (piece === '/') {                                // skip to next row
                 row++;
@@ -73,7 +74,7 @@
                     cell = cell % 8;
                 }
             } else {
-                var color = (piece < 'a') ? 'w' : 'b';
+                let color = (piece < 'a') ? 'w' : 'b';
                 // put({type: piece.toLowerCase(), color: color}, algebraic(square));
                 // square++;
                 cell++;
@@ -140,13 +141,53 @@
     }
 
 
-// Board.prototype.getMove(validMoves, callback){
-//     //has to activate the board and allow only valid moves to be made, then once a move is made the callback function takes the valid move as input
-//
-//     //
-//     callback(from, to);
-// }
+    // TODO: fix this sh*t
 
+
+    //supposed to highlight which squares the selected piece can go to.
+    Board.prototype.showMoves = function (from, chess) {
+        let possibleSquares = chess.moves({square: from});
+        for (let i = 0; i < possibleSquares.length; i++) {
+            let cell = document.getElementById(possibleSquares[i]);
+            cell.setAttribute('style', 'background-color: red');
+            console.log("possible move: " + possibleSquares[i]);
+        }
+    }
+
+
+    // Resets the colors
+    Board.prototype.resetColors = function (from, chess) {
+        let chessboard = document.getElementById("chessboard");
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                chessboard.rows[i].cells[j].setAttribute("style", "blue");
+            }
+        }
+    }
+
+
+
+    // Board.prototype.getMove(validMoves, callback){
+    //     //has to activate the board and allow only valid moves to be made, then once a move is made the callback function takes the valid move as input
+    //
+    //     //
+    //
+    //         callback(from, to);
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO: later
     /*
      * Object representing the status bar.
      */

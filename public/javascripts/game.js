@@ -65,8 +65,8 @@ function makeBoard(size) {
 }
 
 
-
-
+// Trying out Event Listeners
+//const
 
 
 var chess = new Chess();
@@ -82,6 +82,7 @@ function drop(ev) {
   var move = { from: fromId, to: toId }
   //console.log("drop", ev, ev.toElement.id, from, from.innerHTML, move);
   var result = chess.move(move);
+  Board.prototype.resetColors();
   if(result==null) return;
   to.innerHTML = from.innerHTML;
   from.innerHTML = "";
@@ -109,7 +110,10 @@ function drop(ev) {
   } */
 
   function drag(ev) {
+    //let chess = new Chess();
+
     ev.dataTransfer.setData("start", ev.target.id);
+    Board.prototype.showMoves(ev.target.id, chess)
   }
 
 function allowDrop(ev){
