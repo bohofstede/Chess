@@ -19,8 +19,21 @@
             chessboard.appendChild(row);
             for (var j = 0; j < 8; j++) {
                 let cell = document.createElement('td');
-                var column = 8 - i;
-                var idToString = String.fromCharCode(97 + j) + column;
+                var column;
+                var idToString;
+
+                if (playerType == 'white') {
+                   column = 8 - i;
+                   idToString = String.fromCharCode(97 + j) + column;
+                    console.log(idToString);
+                    console.log(i);
+                }
+                if (playerType == 'black') {
+                    column = i + 1;
+                    idToString = String.fromCharCode(104 - j) + column;
+                    console.log(idToString);
+                    console.log(i);
+                }
                 cell.setAttribute("class", "chessboard " + playerType);
                 row.appendChild(cell);
 
@@ -35,6 +48,7 @@
                 cell.setAttribute('id', idToString);  // id
                 cell.setAttribute('ondrop', 'drop(event)');
                 cell.setAttribute('ondragover', 'allowDrop(event)');
+
                 // cell.appendChild(content);
                 // let text = document.createTextNode(idToString); // to edit the value inside each cell
                 // cell.appendChild(text);
@@ -50,39 +64,65 @@
     }
 
 
-    Board.prototype.updateBoard = function (fen) {
+    Board.prototype.updateBoard = function (fen, playerType) {
         //function takes in the 2d board from the library and visualises the chessboard
         let chessboard = document.getElementById('chessboard');
+
+        // for (let x = 0; x < 8; x++) {
+        //     for (let y = 0; j < 8; y++)
+        //     chessboard.rows[x].cells[y].innerHTML = "hi";
+        // }
+
+
+        // console.log(fen);
 
         let tokens = fen.split(/\s+/);
         let position = tokens[0];
 
 
         let row = 0;
-        let cell = -1;
+        let cell = 0;
 
         for (let i = 0; i < position.length; i++) {
             let piece = position.charAt(i);
+            // console.log(piece);
 
             if (piece === '/') {                                // skip to next row
-                row++;
-                cell = -1;
+                //row++;
+                cell = 0;
             } else if (is_digit(piece)) {                       // skip a number of cells
-                cell += parseInt(piece, 10);
-                if (cell > 8) {
-                    row++;
-                    cell = cell % 8;
+                //cell += parseInt(piece, 10);
+                for (let j = 0; j < piece; j++) {
+                    if (playerType == 'white') {
+                        chessboard.rows[row].cells[cell].innerHTML = "";
+                    }
+                    if (playerType == 'black') {
+                        chessboard.rows[7 - row].cells[7 - cell].innerHTML = "";
+                    }
+
+                    cell++;
+                    if (cell >= 8) {
+                        row++;
+                        cell = cell % 8;
+                    }
                 }
             } else {
                 let color = (piece < 'a') ? 'w' : 'b';
                 // put({type: piece.toLowerCase(), color: color}, algebraic(square));
                 // square++;
+
+
+                if (playerType == 'white') {
+                    chessboard.rows[row].cells[cell].innerHTML = convertToPiece(piece.toLowerCase(), color);
+                }
+                if (playerType == 'black') {
+                    chessboard.rows[7 - row].cells[7 - cell].innerHTML = convertToPiece(piece.toLowerCase(), color);
+                }
                 cell++;
-                if (cell > 8) {
+                if (cell >= 8) {
                     row++;
                     cell = cell % 8;
                 }
-                chessboard.rows[row].cells[cell].innerHTML = convertToPiece(piece.toLowerCase(), color);
             }
 
         }
@@ -148,9 +188,22 @@
     Board.prototype.showMoves = function (from, chess) {
         let possibleSquares = chess.moves({square: from});
         for (let i = 0; i < possibleSquares.length; i++) {
-            let cell = document.getElementById(possibleSquares[i]);
-            cell.setAttribute('style', 'background-color: red');
-            console.log("possible move: " + possibleSquares[i]);
+            let temp = possibleSquares[i].split("");
+            //console.log(temp + " __ " + temp[temp.length-2]);
+
+            if (temp.length == 2) {
+                let cell = document.getElementById(possibleSquares[i]);
+                //console.log("Hi: possible move: " + possibleSquares[i], cell);
+                cell.setAttribute('style', 'background-color: red');
+                //console.log("possible move: " + possibleSquares[i]);
+            } else if (temp[temp.length - 2] == '=') {
+                let cell = document.getElementById(temp[temp.length - 4] + temp[temp.length - 3]);
+                cell.setAttribute('style', 'background-color: red');
+            }
+            else {
+                let cell = document.getElementById(temp[temp.length - 2] + temp[temp.length - 1]);
+                cell.setAttribute('style', 'background-color: red');
+            }
         }
     }
 

@@ -32,9 +32,6 @@ function makeBoard(size) {
       cell.appendChild(text);
   }
 }
-
-
-
 // Adds the pieces to a chessboard
 // function setupPieces() {
 //   var chessboard = document.getElementById('chessboard');
@@ -65,8 +62,7 @@ function makeBoard(size) {
 }
 
 
-// Trying out Event Listeners
-//const
+
 
 
 var chess = new Chess();
@@ -81,39 +77,46 @@ function drop(ev) {
   var toId = to.id;
   var move = { from: fromId, to: toId }
   //console.log("drop", ev, ev.toElement.id, from, from.innerHTML, move);
-  var result = chess.move(move);
-  Board.prototype.resetColors();
+
+  var result;
+
+  // promotion (automatic to queen)
+   let temp = toId;
+   temp.split("");
+   console.log(temp[1]);
+  if (temp[1] == '8' || temp[1] == '1' || temp[3] == '8' || temp[3] == '1') {
+    console.log(temp + " ----- " + temp[3]);
+    let promote = chess.moves({square: fromId});
+
+    for (let i = 0; i < promote.length; i++) {
+      let temp2 = promote[i];
+      temp2.split("");
+      if (temp2[0] + temp2[1] == toId || temp2[2] + temp2[3] == toId) {
+        move = promote[i];
+        break;  // remove this line to auto promote to a knight
+      }
+    }
+    result = chess.move(move);
+    // TODO: send to server
+
+    // regular move
+  } else {
+    result = chess.move(move);
+    // TODO: send to server
+
+  }
+
+  setTimeout(function() {
+    Board.prototype.resetColors()
+    Board.prototype.updateBoard(chess.fen(), 'white'); // TODO playerType should be set dynamically
+  }, 50);
+
   if(result==null) return;
-  to.innerHTML = from.innerHTML;
-  from.innerHTML = "";
 } 
 
-
-/* function drop(ev) {
-    console.log("hello");
-    console.log(ev);
-    ev.preventDefault();
-    var from = ev.dataTransfer.getData("start");
-    console.log(from);
-    var to = ev.toElement.id;
-    console.log(to);
-
-   var res = chess.move({ from: from, to: to });
-
-   if(res==null){
-     console.log("result is null");
-   }
-   else{
-     console.log("movemad");
-   }
-
-  } */
-
   function drag(ev) {
-    //let chess = new Chess();
-
     ev.dataTransfer.setData("start", ev.target.id);
-    Board.prototype.showMoves(ev.target.id, chess)
+    Board.prototype.showMoves(ev.target.id, chess);
   }
 
 function allowDrop(ev){

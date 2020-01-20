@@ -4,7 +4,101 @@
 <meta charset="UTF-8" lang="en">
 <head>
     <title>Splash Screen</title>
-    <link rel="stylesheet" href="stylesheets/splash.css" />
+    <link rel="stylesheet" href="./stylesheets/splash.css">
+    <style>
+        /* -------------Stylesheet for the splash screen-------------- */
+
+        body {
+            background-color: #eeeeee;
+            font-family: "Gadugi", sans-serif;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        #left {
+            float: left;
+            width: 56.25vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        #right {
+            float: right;
+            width: 43.75vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
+        tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
+            background-color: black;
+        }
+
+        table.chessboard {
+            border: 0;
+        }
+
+
+        tr.chessboard, td.chessboard {
+            height: 11vh;
+            color: red;
+            width: 11vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
+
+        }
+
+
+
+
+
+        /*
+        #Title {
+            color: #121212;
+            background-color: #CCCCCC;
+            margin: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+
+        }
+
+        #Content {
+            width: 75%;
+            max-width: 800px;
+            align-content: center;
+            margin: 50px auto auto;
+        }
+
+
+
+        #playButton {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: "Gadugi";
+            width: 250px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: #CCCCCC;
+            border: 1px solid #121212;
+            display: block;
+
+        }
+
+        #playButton:active {
+            background-color: #DDDDDD;
+        }
+
+        #playButton:hover {
+            background-color: #CDCDCD;
+        }
+        */
+
+    </style>
 
 
 </head>
@@ -12,157 +106,157 @@
 
 <body>
 
-<section id="left">
+<div id="left"><table id="chessboard">
 
-        <table class="chessboard">
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard">S</td>
-                <td class="chessboard">t</td>
-                <td class="chessboard">u</td>
-                <td class="chessboard">p</td>
-                <td class="chessboard">i</td>
-                <td class="chessboard">d</td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard">S</td>
-                <td class="chessboard">t</td>
-                <td class="chessboard">a</td>
-                <td class="chessboard">n</td>
-                <td class="chessboard">d</td>
-                <td class="chessboard">a</td>
-                <td class="chessboard">rd</td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard">C</td>
-                <td class="chessboard">h</td>
-                <td class="chessboard">e</td>
-                <td class="chessboard">s</td>
-                <td class="chessboard">s</td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
+<!--        <table class="chessboard">-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard">S</td>-->
+<!--                <td class="chessboard">t</td>-->
+<!--                <td class="chessboard">u</td>-->
+<!--                <td class="chessboard">p</td>-->
+<!--                <td class="chessboard">i</td>-->
+<!--                <td class="chessboard">d</td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard">S</td>-->
+<!--                <td class="chessboard">t</td>-->
+<!--                <td class="chessboard">a</td>-->
+<!--                <td class="chessboard">n</td>-->
+<!--                <td class="chessboard">d</td>-->
+<!--                <td class="chessboard">a</td>-->
+<!--                <td class="chessboard">rd</td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard">C</td>-->
+<!--                <td class="chessboard">h</td>-->
+<!--                <td class="chessboard">e</td>-->
+<!--                <td class="chessboard">s</td>-->
+<!--                <td class="chessboard">s</td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
 
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-            </tr>
-            <tr class="chessboard">
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="chessboard"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-                <td class="empty"></td>
-            </tr>
-            </table>
-</section>
-<section id="right">
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            <tr class="chessboard">-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="chessboard"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--                <td class="empty"></td>-->
+<!--            </tr>-->
+<!--            </table>-->
+</table></div>
+<div id="right">
                 <h1>Stupid Standard Chess</h1>
                 <h4>Description:</h4>
 
@@ -179,11 +273,31 @@
                 </button>
 
 
-</section>
+</div>
 
 
 </body>
 
+<script>
 
+    function chessboardBackground() {
+        let chessboard = document.getElementById('chessboard');
+        for (let i = 0; i < 9; i++) {
+            let row = document.createElement('tr');
+            row.setAttribute("class", "chessboard");
+            chessboard.appendChild(row);
+            for (let j = 0; j < 9; j++) {
+                let cell = document.createElement('td');
+                cell.setAttribute("class", "chessboard");
+                row.appendChild(cell);
+                cell.setAttribute("id", i + j);
+            }
+        }
+
+    };
+    chessboardBackground();
+
+
+</script>
 
 </html>
