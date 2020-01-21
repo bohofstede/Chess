@@ -144,33 +144,35 @@
 
 
 
-    // Global Fields
+    // TODO Global Fields - still undecided on what the necessary fields are
     Board.prototype.validMoves = [];
     Board.prototype.callback = null;
     Board.prototype.fen = "";
-    var Chess = require('./chess').Chess;
+    // var Chess = require('./chess').Chess; // require the chess library
 
 
 
 
 
-
+    //  TODO:
     //  Has to activate the board and allow only valid moves to be made,
     //  then once a move is made the callback function takes the valid move as input
-    Board.prototype.getMove = function (validMoves, fen, callback) {
+    Board.prototype.getMove = function (validMoves, callback) {
 
         // sets fields
-        Board.prototype.validMoves = validMoves; // ignored
+        Board.prototype.validMoves = validMoves;
         Board.prototype.callback = callback;
-        Board.prototype.fen = fen;
+        //Board.prototype.fen = fen;
 
 
     }
+
 
     // Checks if input is a digit
     function is_digit(c) {
         return '0123456789'.indexOf(c) !== -1;
     }
+
 
 
     // Test code
@@ -181,18 +183,24 @@
     // }, 100);
 
 
-    // Allow drop
+
+    // Allows for pieces to be dropped
     function allowDrop(ev){
         // console.log("heythere");
         ev.preventDefault();
     }
 
 
-    // Drag
+
+    // TODO: fix drag
+    // Drag event
+    // Supposed to show which squares the piece can go move to,
+    // and to send the original square to to the server, to register the move
     function drag(ev) {
-        let chess = new Chess(Board.prototype.fen);
+        //let chess = new Chess(Board.prototype.fen);
         ev.dataTransfer.setData("start", ev.target.id);
-        Board.prototype.showMoves(ev.target.id, chess.moves(ev.target.id));
+        console.log(Board.prototype.validMoves);
+        // Board.prototype.showMoves(ev.target.id, chess.moves(ev.target.id));
     }
 
     // TODO drag n drop n allowDrop
@@ -203,58 +211,69 @@
     function drop(ev) {
         ev.preventDefault();
 
-        let chess = new Chess(Board.prototype.fen);
-
+        //let chess = new Chess(Board.prototype.fen);
+        // console.log(Board.prototype.validMoves);
         var fromId = ev.dataTransfer.getData("start");
         var from = document.getElementById(fromId);
         var to = ev.toElement;
         var toId = to.id;
         var move = [fromId, toId];
-        //console.log("drop", ev, ev.toElement.id, from, from.innerHTML, move);
+        console.log("drop", ev, ev.toElement.id, from, from.innerHTML, move);
 
-        var result;
+
+
+        // var result;
 
         // promotion (automatic to queen)
-        let temp = toId;
-        temp.split("");
-        // console.log(temp[1]);
-        if (temp[1] == '8' || temp[1] == '1' || temp[3] == '8' || temp[3] == '1') {
-            // console.log(temp + " ----- " + temp[3]);
-            let promote = chess.moves(fromId); // TODO check if we can use validMoves this way
-
-            for (let i = 0; i < promote.length; i++) {
-                let temp2 = promote[i];
-                temp2.split("");
-                if (temp2[0] + temp2[1] == toId || temp2[2] + temp2[3] == toId) {
-                    move = promote[i];  // TODO might need rework
-                    break;  // remove this line to auto promote to a knight
-                }
-            }
-            // TODO: send to server, check if works
-            Board.prototype.callback = move;
-            result = move;
+        // let temp = toId;
+        // temp.split("");
+        // // console.log(temp[1]);
+        // if (temp[1] == '8' || temp[1] == '1' || temp[3] == '8' || temp[3] == '1') {
+        //     // console.log(temp + " ----- " + temp[3]);
+        //     let promote = chess.moves(fromId); // TODO check if we can use validMoves this way
+        //
+        //     for (let i = 0; i < promote.length; i++) {
+        //         let temp2 = promote[i];
+        //         temp2.split("");
+        //         if (temp2[0] + temp2[1] == toId || temp2[2] + temp2[3] == toId) {
+        //             move = promote[i];  // TODO might need rework
+        //             break;  // remove this line to auto promote to a knight
+        //         }
+        //     }
+        //     // TODO: send to server, check if works
+        //     Board.prototype.callback = move;
+        //     result = move;
 
             // regular move
-        } else {
+        // } else {
             // TODO: send to server, check if works
             // Board.prototype.callback(move);
-            Board.prototype.callback = move;
-            result = move;
+        for (let i = 0; i < Board.prototype.validMoves.length; i++) {
+            // console.log(Board.prototype.validMoves[i].from + " - " + Board.prototype.validMoves[i].to);
+            // console.log("hell");
+            if (Board.prototype.validMoves[i].from == fromId && Board.prototype.validMoves[i].to == toId ) {
+                    console.log(true);
+                Board.prototype.callback = move;
+                setTimeout(function(){callback(move[0],move[1] )},100);
+                // result = move;
+            }
         }
+
+        // }
 
         // setTimeout(function() {
         //     Board.prototype.resetColors()
         //     Board.prototype.updateBoard(fen, playerType); // TODO playerType should be set dynamically, server needs to send the updated fen
         // }, 50);
 
-        if(result==null) return;
+        // if(result==null) return;
 
         //TODO clear callback and validMoves?? where are these declared?
         setTimeout( function() {
             Board.prototype.validModes = [];
             Board.prototype.callback = null;
             Board.prototype.fen = "";
-        }, 500);
+        }, 5000);
 
 
 

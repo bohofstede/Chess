@@ -84,7 +84,7 @@ GameState.prototype.updateView = function () {
     this.socket.close();
   }
 
-  else if (isMyTurn) this.board.getMove(this.chess.moves({ verbose: true }), this.chess.fen(), function (from, to) {
+  else if (isMyTurn) this.board.getMove(this.chess.moves({ verbose: true }), function (from, to) {
 
     var msg = Messages.O_MOVE;
     msg.from = from;
