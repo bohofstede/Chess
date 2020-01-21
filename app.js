@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.render("splash.ejs", {
     gamesInitialized: gameStatus.gamesInitialized,
     gamesCompleted: gameStatus.gamesCompleted,
-    movesPlayes: gameStatus.movesPlayed
+    movesPlayed: gameStatus.movesPlayed
   });
 });
 
@@ -70,16 +70,17 @@ wss.on("connection", function connection(ws) {
   );
 
   if (currentGame.hasTwoConnectedPlayers()) {
-    /*
+
+    // inform the clients about their assigned player type
+    currentGame.playerWhite.send(messages.S_PLAYER_WHITE);
+    currentGame.playerBlack.send(messages.S_PLAYER_BLACK);
+
+  /*
    * once we have two players, there is no way back;
    * a new game object is created;
    * if a player now leaves, the game is aborted (player is not preplaced)
    */
     currentGame = new Game(gameStatus.gamesInitialized++);
-
-    // inform the clients about their assigned player type
-    currentGame.playerWhite.send(messages.S_PLAYER_WHITE);
-    currentGame.playerBlack.send(messages.S_PLAYER_BLACK);
   };
 
   /*
