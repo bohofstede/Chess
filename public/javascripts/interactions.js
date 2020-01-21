@@ -13,8 +13,6 @@ function GameState(socket, playerType) {
   this.playerType = playerType;
   this.chess = new Chess();
 
-  // var Chess
-
   console.log(this.playerType);
 
   this.updateView();
@@ -39,11 +37,11 @@ GameState.prototype.isDone = function () {
 GameState.prototype.updateState = function (from, to) {
   console.log("updateState", from, to)
 
-  console.assert(
+  /* console.assert(
     typeof from == "string" && typeof to == "string",
     "%s: Expecting a string",
     arguments.callee.name
-  );
+  ); */
 
   console.assert(
     this.chess.move({ from: from, to: to }) != null,
@@ -78,9 +76,7 @@ GameState.prototype.updateView = function () {
     this.statusBar.updateStatus(isMyTurn ? "gameLost" : "gameWon");
   }
   if (isDone) {
-    setTimeout(function () {
-      new Audio("../data/chessMove.wav").play();
-    }, 500);
+   
     this.socket.close();
   }
 
