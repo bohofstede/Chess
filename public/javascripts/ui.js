@@ -1,10 +1,3 @@
-/*
- * Object representing the (un)hidden word.
- */
-
-// eslint-disable-next-line no-unused-vars
-
-
     // Creates the chessboard without the pieces
     // @param playerType - black or white
     function Board(playerType) {
@@ -47,11 +40,6 @@
         }
 
     }
-
-
-
-
-
 
     // Updates the html of the board.
     // @param FEN string, which is given by the Chess object which denotes the position on the board
@@ -310,23 +298,6 @@
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
     * Object representing the status bar.

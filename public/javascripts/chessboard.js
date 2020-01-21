@@ -141,7 +141,6 @@ function convertToPiece(string, color) {
     }
 }
 
-
 //supposed to highlight which squares the selected piece can go to.
 Board.prototype.showMoves = function (from, chess) {
     let possibleSquares = chess.moves({ square: from });
@@ -183,16 +182,6 @@ Board.prototype.resetColors = function (from, chess) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 // TODO: later
 /*
  * Object representing the status bar.
@@ -208,18 +197,3 @@ function StatusBar() {
 // StatusBar.prototype.updateStatus(status){
 //     //display the new status
 // }
-
-
-
-
-
-
-
-
-// Testing
-
-// // var Chess = require('./chess').Chess;
-//     var chess = new Chess();
-//
-//
-//     Board.prototype.updateBoard(chess.generate_fen());
