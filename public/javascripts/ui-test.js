@@ -1,116 +1,99 @@
-/* every game has two players, identified by their WebSocket */
-function makeBoard(size) {
-    var chessboard = document.getElementById('chessboard');
-    for(var i = 0; i < size; i++) {
-      let row = document.createElement('tr');
-      row.setAttribute("class", "chessboard");
-      chessboard.appendChild(row);
-      for(var j = 0; j < size; j++) {
-        let cell = document.createElement('td');
-        var column = 8 - i;
-        var idToString = String.fromCharCode(97 + j) + column;
-        cell.setAttribute("class", "chessboard");
-        row.appendChild(cell);
-  
-       // let content = document.createElement('div');
-        cell.setAttribute('ondragstart', 'drag(event)');
-        cell.setAttribute('draggable', 'true');
-        cell.setAttribute('id', 'idToString');  // id
-        cell.setAttribute('ondrop', 'drop(event');
-        cell.setAttribute('ondragover', 'allowDrop(event)');
-        // cell.appendChild(content);
-  
-        let text = document.createTextNode(idToString); // to edit the value inside each cell
-        cell.appendChild(text);
+/*
+ * Object representing the (un)hidden word.
+ */
+
+// eslint-disable-next-line no-unused-vars
+function Board(playerType) {
+    this.playerType = playerType; 
+    
+    //create the chessboard without the pieces
+    
     }
-  }
-  // Adds the pieces to a chessboard
-  // function setupPieces() {
-  //   var chessboard = document.getElementById('chessboard');
-  //   var placement = chess.board();
-  //
-  //   for (var i = 0; i < 8; i++) {
-  //     for (var j = 0; j <8; j++) {
-  //
-  //       chessboard.rows[i].cells[j].innerHTML = "<span ondragstart='drag(event)' draggable='true' id='a3' ondrop='drop(event)' ondragover='allowDrop(event)'"placement[i][j];
-  //
-  //     }
-  // }
-  
-  
-    // var pieces = document.
-    // var piecesBlack = {}
-    // var board = [size][size];
-    // for (var i = 0; i < size; i++) {
-    //   for (var j = 0; j < size; j++) {
-    //     if (color == 'white') {
-    //       chessboard.rows[i].cells[j] =
-    //     } else {
-    //
-    //     }
-    //   }
-    //   chessboard.rows[i].cells[j];
-    // }
-  }
-  
-  
-  
-  
-  
-  var chess = new Chess();
-  
-  
-  
-  function drop(ev) {
-    ev.preventDefault();
-    var fromId = ev.dataTransfer.getData("start");
-    var from = document.getElementById(fromId);
-    var to = ev.toElement;
-    var toId = to.id;
-    var move = { from: fromId, to: toId }
-    //console.log("drop", ev, ev.toElement.id, from, from.innerHTML, move);
-  
-    var result;
-  
-    // promotion (automatic to queen)
-     let temp = toId;
-     temp.split("");
-     console.log(temp[1]);
-    if (temp[1] == '8' || temp[1] == '1') {
-      let promote = chess.moves({square: fromId});
-  
-      for (let i = 0; i < promote.length; i++) {
-        let temp2 = promote[i];
-        temp2.split("");
-        if (temp2[0] + temp2[1] == toId) {
-          move = promote[i];
-          break;  // remove this line to auto promote to a knight
-        }
-      }
-      result = chess.move(move);
-      // TODO: send to server
-  
-      // regular move
-    } else {
-      result = chess.move(move);
-      // TODO: send to server
-  
+
+    Board.prototype.updateBoard = function(fen){
+      //function takes in the 2d board from the library and visualises the chessboard
     }
-  
-    setTimeout(function() {
-      Board.prototype.resetColors()
-      Board.prototype.updateBoard(chess.fen());
-    }, 50);
-  
-    if(result==null) return;
-  } 
-  
-    function drag(ev) {
-      ev.dataTransfer.setData("start", ev.target.id);
-      Board.prototype.showMoves(ev.target.id, chess);
+    
+    const moves = [["f2","f3"],["e7","e5"],["g2","g4"],["d8","h4"]];
+    var moveID = 0;
+
+    Board.prototype.validMoves = []
+    Board.prototype.callback = null
+
+    //Has to activate the board and allow only valid moves to be made, then once a move is made the callback function takes the valid move as input
+    Board.prototype.getMove = function(validMoves, callback){
+
+      Board.prototype.validMoves = validMoves;
+      Board.prototype.callback = callback;
+
+      // Test code 
+      var m = moves[moveID++ * 2 + (this.playerType == "WHITE" ? 0 : 1)];
+      console.log("Playing",m[0],m[1]);
+      setTimeout(function () {callback(m[0],m[1])},100);
+
+      /* TO IMPLEMENT
+      // drag/drop functions allow only valid moves 
+      // and then call callback to pass back the user move
+      Board.prototype.callback(from,to);
+
+      // clear callback and validMoves
+      Board.prototype.validModes = [];
+      Board.prototype.callback = null;
+      */
     }
-  
-  function allowDrop(ev){
-    console.log("heythere");
-      ev.preventDefault();
-  }
+    
+    
+    
+    /*
+     * Object representing the status bar.
+     */
+    
+    // eslint-disable-next-line no-unused-vars
+    function StatusBar() {
+      this.setStatus = function(status) {
+        document.getElementById("statusbar").innerHTML = status;
+      };
+    }
+
+   
+    StatusBar.prototype.updateStatus = function(statusMessageId) {
+      this.setStatus(Status[statusMessageId]);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

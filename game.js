@@ -14,8 +14,8 @@ var game = function (gameID) {
   game.prototype.transitionStates["0 JOINT"] = 0;
   game.prototype.transitionStates["1 JOINT"] = 1;
   game.prototype.transitionStates["2 JOINT"] = 2;
-  game.prototype.transitionStates["WHITE TURN"] = 3;
-  game.prototype.transitionStates["BLACK TURN"] = 4;
+  // game.prototype.transitionStates["WHITE TURN"] = 3;
+  // game.prototype.transitionStates["BLACK TURN"] = 4;
   game.prototype.transitionStates["WHITE"] = 5; //White won
   game.prototype.transitionStates["BLACK"] = 6; //Black won
   game.prototype.transitionStates["DRAW"] = 7;
@@ -132,21 +132,23 @@ var game = function (gameID) {
   };
   
   
-  game.prototype.nextPlayer = function () {
-    if (this.gameState == "BLACK TURN"){
-      this.setStatus("WHITE TURN");
-      return this.playerWhite;
-    } 
+  game.prototype.otherPlayer = function (player) {
+    return this.playerWhite.id==player.id ? this.playerBlack : this.playerWhite;
+
+    // if (this.gameState == "BLACK TURN"){
+    //   this.setStatus("WHITE TURN");
+    //   return this.playerWhite;
+    // } 
   
-    if (this.gameState == "WHITE TURN"){
-      this.setStatus("BLACK TURN");
-      return this.playerBlack;
-    }
+    // if (this.gameState == "WHITE TURN"){
+    //   this.setStatus("BLACK TURN");
+    //   return this.playerBlack;
+    // }
   
-    return new Error(
-      "Invalid call to nextPlayer, current state is %s",
-      this.gameState
-    );
+    // return new Error(
+    //   "Invalid call to nextPlayer, current state is %s",
+    //   this.gameState
+    // );
   
   
   };
