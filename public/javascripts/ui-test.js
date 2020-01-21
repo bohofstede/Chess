@@ -147,7 +147,6 @@
     // TODO Global Fields - still undecided on what the necessary fields are
     Board.prototype.validMoves = [];
     Board.prototype.callback = null;
-    Board.prototype.fen = "";
     // var Chess = require('./chess').Chess; // require the chess library
 
 
@@ -162,9 +161,6 @@
         // sets fields
         Board.prototype.validMoves = validMoves;
         Board.prototype.callback = callback;
-        //Board.prototype.fen = fen;
-
-
     }
 
 
@@ -246,16 +242,16 @@
 
             // regular move
         // } else {
-            // TODO: send to server, check if works
-            // Board.prototype.callback(move);
+        // Send 
         for (let i = 0; i < Board.prototype.validMoves.length; i++) {
             // console.log(Board.prototype.validMoves[i].from + " - " + Board.prototype.validMoves[i].to);
             // console.log("hell");
             if (Board.prototype.validMoves[i].from == fromId && Board.prototype.validMoves[i].to == toId ) {
-                    console.log(true);
-                Board.prototype.callback = move;
-                setTimeout(function(){callback(move[0],move[1] )},100);
-                // result = move;
+                const cb = Board.prototype.callback;
+                Board.prototype.callback = null;
+                Board.prototype.validModes = [];
+                cb(move[0],move[1]);
+                break;
             }
         }
 
@@ -268,12 +264,6 @@
 
         // if(result==null) return;
 
-        //TODO clear callback and validMoves?? where are these declared?
-        setTimeout( function() {
-            Board.prototype.validModes = [];
-            Board.prototype.callback = null;
-            Board.prototype.fen = "";
-        }, 5000);
 
 
 

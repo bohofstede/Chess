@@ -95,6 +95,7 @@ wss.on("connection", function connection(ws) {
 
     //finding the game being played
     let gameObj = websockets[con.id];
+    
 
     if (oMsg.type == messages.T_MOVE) {
       gameStatus.movesPlayed++;
