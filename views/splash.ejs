@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -5,102 +11,6 @@
 <head>
     <title>Splash Screen</title>
     <link rel="stylesheet" href="./stylesheets/splash.css">
-    <style>
-        /* -------------Stylesheet for the splash screen-------------- */
-
-        body {
-            background-color: #eeeeee;
-            font-family: "Gadugi", sans-serif;
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
-
-        #left {
-            float: left;
-            width: 56.25vw;
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
-
-        #right {
-            float: right;
-            width: 43.75vw;
-            padding: 0;
-            margin: 0;
-            border: 0;
-        }
-
-        tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
-        tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
-            background-color: black;
-        }
-
-        table.chessboard {
-            border: 0;
-        }
-
-
-        tr.chessboard, td.chessboard {
-            height: 11vh;
-            color: red;
-            width: 11vw;
-            padding: 0;
-            margin: 0;
-            border: 0;
-
-        }
-
-
-
-
-
-        /*
-        #Title {
-            color: #121212;
-            background-color: #CCCCCC;
-            margin: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            text-align: center;
-
-        }
-
-        #Content {
-            width: 75%;
-            max-width: 800px;
-            align-content: center;
-            margin: 50px auto auto;
-        }
-
-
-
-        #playButton {
-            font-size: 14px;
-            font-weight: bold;
-            font-family: "Gadugi";
-            width: 250px;
-            height: 50px;
-            margin: 20px auto;
-            background-color: #CCCCCC;
-            border: 1px solid #121212;
-            display: block;
-
-        }
-
-        #playButton:active {
-            background-color: #DDDDDD;
-        }
-
-        #playButton:hover {
-            background-color: #CDCDCD;
-        }
-        */
-
-    </style>
-
-
 </head>
 
 
@@ -265,7 +175,17 @@
                     Actually there is a little secret nugget: notice what the acronym spells backwards. Anyways...
                     Play chess. Try to win. Checkmate the other's king.Hope you enjoy it!</p>
                 <h4>Statistics:</h4>
-                <p>[To be added]</p>
+                <h5><%= gamesInitialized %> 
+                    <%if (gamesInitialized != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    initialized, 
+                    <%= gamesCompleted %> 
+                    completed</h5>
+                    <%= movesPlayed %> 
+                    moves played</h5>
 
                 <button id="playButton" onclick="window.location.href = './game.html'">
                     <!--onclick="window.location.href = 'file:///C:/Users/leozi/myapp/public/game.html';"-->

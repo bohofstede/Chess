@@ -1,83 +1,91 @@
-/*!* -------------Stylesheet for the splash screen-------------- *!*/
+        /* -------------Stylesheet for the splash screen-------------- */
 
-/*body {*/
-/*    background-color: #eeeeee;*/
-/*    font-family: "Gadugi", sans-serif;*/
-/*    padding: 0;*/
-/*    margin: 0;*/
-/*}*/
+        body {
+            background-color: #eeeeee;
+            font-family: "Gadugi", sans-serif;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
 
-/*#left {*/
-/*    float: right;*/
-/*}*/
+        #left {
+            float: left;
+            width: 56.25vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
 
-/*#right {*/
-/*    float: right;*/
-/*}*/
+        #right {
+            float: right;
+            width: 43.75vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
 
-/*tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),*/
-/*tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {*/
-/*    background: black;*/
-/*    width: auto;*/
-/*    border: none;*/
-/*    position: absolute;*/
-/*}*/
+        tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
+        tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
+            background-color: black;
+        }
 
-
-
-/*!*tr.chessboard{*!*/
-/*!*    height: 50px;*!*/
-/*!*    color: red;*!*/
-/*!*    width: auto;*!*/
-/*!*    !*padding: auto;*!*!*/
-/*!*    margin: 0;*!*/
-/*!*}*!*/
-
-/*!*table.chessboard {*!*/
-/*!*    height: 100%*!*/
-/*!*}*!*/
+        table.chessboard {
+            border: 0;
+        }
 
 
+        tr.chessboard, td.chessboard {
+            height: 11vh;
+            color: red;
+            width: 11vw;
+            padding: 0;
+            margin: 0;
+            border: 0;
 
-
-/*!**/
-/*#Title {*/
-/*    color: #121212;*/
-/*    background-color: #CCCCCC;*/
-/*    margin: auto;*/
-/*    padding-top: 20px;*/
-/*    padding-bottom: 20px;*/
-/*    text-align: center;*/
-
-/*}*/
-
-/*#Content {*/
-/*    width: 75%;*/
-/*    max-width: 800px;*/
-/*    align-content: center;*/
-/*    margin: 50px auto auto;*/
-/*}*/
+        }
 
 
 
-/*#playButton {*/
-/*    font-size: 14px;*/
-/*    font-weight: bold;*/
-/*    font-family: "Gadugi";*/
-/*    width: 250px;*/
-/*    height: 50px;*/
-/*    margin: 20px auto;*/
-/*    background-color: #CCCCCC;*/
-/*    border: 1px solid #121212;*/
-/*    display: block;*/
 
-/*}*/
 
-/*#playButton:active {*/
-/*    background-color: #DDDDDD;*/
-/*}*/
+        /*
+        #Title {
+            color: #121212;
+            background-color: #CCCCCC;
+            margin: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
 
-/*#playButton:hover {*/
-/*    background-color: #CDCDCD;*/
-/*}*/
-/**!*/
+        }
+
+        #Content {
+            width: 75%;
+            max-width: 800px;
+            align-content: center;
+            margin: 50px auto auto;
+        }
+
+
+
+        #playButton {
+            font-size: 14px;
+            font-weight: bold;
+            font-family: "Gadugi";
+            width: 250px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: #CCCCCC;
+            border: 1px solid #121212;
+            display: block;
+
+        }
+
+        #playButton:active {
+            background-color: #DDDDDD;
+        }
+
+        #playButton:hover {
+            background-color: #CDCDCD;
+        }
+        */
