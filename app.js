@@ -1,7 +1,7 @@
 var express = require("express");
 var http = require("http");
 var websocket = require("ws");
-
+var cookieParser = require("cookie-parser");
 var indexRouter = require("./routes/index");
 var messages = require("./public/javascripts/messages");
 var config = require("./public/javascripts/config");
@@ -16,18 +16,32 @@ var app = express();
 
 app.set("view engine", "ejs");
 //static files to send are stored here
+
+app.use(cookieParser());
+
 app.use(express.static(__dirname + "/public"));
 
 app.get("/play", indexRouter);
 
-//TODO: move to routes/index
 app.get("/", (req, res) => {
+  var cookie = req.cookies.visitedCookie;
+  if (cookie === undefined) {
+    gameStatus.timesVisited = 1;
+    res.cookie("visitedCookie", gameStatus.timesVisited, { maxAge: 9000 });
+  } else {
+    gameStatus.timesVisited = parseInt(cookie) + 1;
+    res.clearCookie("visitedCookie");
+    res.cookie("visitedCookie", gameStatus.timesVisited, { maxAge: 9000 });
+  }
+
   res.render("splash.ejs", {
     gamesInitialized: gameStatus.gamesInitialized,
     gamesCompleted: gameStatus.gamesCompleted,
-    movesPlayed: gameStatus.movesPlayed
+    movesPlayed: gameStatus.movesPlayed,
+    timesVisited: gameStatus.timesVisited
   });
 });
+
 
 var server = http.createServer(app);
 const wss = new websocket.Server({ server });
