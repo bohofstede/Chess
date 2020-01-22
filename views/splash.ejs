@@ -11,59 +11,128 @@
 <head>
     <title>Splash Screen</title>
     <link rel="stylesheet" href="./stylesheets/splash.css">
+
+
+
+
+
+
+
+
 </head>
 
 
-<body>
+<body id="bodyId">
 
-<div id="left"><table id="chessboard">
+<div id="left"><table id="chessboard"></table></div>
 
 
-</table></div>
 <div id="right">
-                <h4>Statistics:</h4>
-                <h5><%= gamesInitialized %> 
-                    <%if (gamesInitialized != 1) { %>
-                        games
-                    <% } else { %>
-                        game
-                    <% } %>
-                    initialized, 
-                    <%= gamesCompleted %> 
-                    completed,
-                    <%= movesPlayed %> 
-                    moves played.</h5>
+
+                <div id="empty"></div>
 
                 <button id="playButton" onclick="window.location.href = './game.html'">
                     <!--onclick="window.location.href = 'file:///C:/Users/leozi/myapp/public/game.html';"-->
                     Play Game!
                 </button>
 
+                <div id="Content">
+                <h4> Description: </h4>
+                <p>
+                    What is there to say?? This is just chess... Standard.. Stupid.. Chess...
+                    I honestly don't know why you are still reading this. Do you have a life?
+                    Just play the game or leave. It is not like there is something interesting written here.
+                    Well.. actually... there is a little easter egg that you might not have noticed.
+                    Check a2 ;)
+
+                </p>
+                </div>
+
+                <div id="Statistics">
+                    <h4>Statistics:</h4>
+                    <h5><%= gamesInitialized %>
+                        <%if (gamesInitialized != 1) { %>
+                            games
+                        <% } else { %>
+                            game
+                        <% } %>
+                        initialized,
+                        <%= gamesCompleted %>
+                        completed,
+                        <%= movesPlayed %>
+                        moves played.</h5>
 
 
-            </div>
+                </div>
+                <button id="fullscreen" onclick="
+                    let x = document.getElementById('bodyId');
+                    if (x.requestFullscreen) {
+                        x.requestFullscreen();
+                      } else if (x.mozRequestFullScreen) { /* Firefox */
+                        x.mozRequestFullScreen();
+                      } else if (x.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                        x.webkitRequestFullscreen();
+                      } else if (x.msRequestFullscreen) { /* IE/Edge */
+                        x.msRequestFullscreen();
+                      }">
+                    Fullscreen
+                </button>
+
+
+
+</div>
 </body>
+
 
 <script>
 
-    function chessboardBackground() {
-        let chessboard = document.getElementById('chessboard');
-        for (let i = 0; i < 9; i++) {
-            let row = document.createElement('tr');
-            row.setAttribute("class", "chessboard");
-            chessboard.appendChild(row);
-            for (let j = 0; j < 9; j++) {
-                let cell = document.createElement('td');
-                cell.setAttribute("class", "chessboard");
-                row.appendChild(cell);
-                cell.setAttribute("id", i + j);
+        function chessboardBackground() {
+            let chessboard = document.getElementById('chessboard');
+            for (let i = 0; i < 9; i++) {
+                let row = document.createElement('tr');
+                row.setAttribute("class", "chessboard");
+                chessboard.appendChild(row);
+                for (let j = 0; j < 10; j++) {
+                    let cell = document.createElement('td');
+                    cell.setAttribute("class", "chessboard");
+                    row.appendChild(cell);
+                    cell.setAttribute("id", i + j);
+                }
             }
-        }
+            let text = ["Standard", "Stupid", "Chess"];
+            for (let x = 0; x < text.length; x++) {
+                let word = text[x];
+                for (let y = 0; y < word.length; y++) {
+                    chessboard.rows[x + 1].cells[y + 1].innerHTML = word.charAt(y);
+                }
+            }
+            chessboard.rows[7].cells[1].setAttribute("id", "easterEgg");
+            chessboard.rows[7].cells[1].innerHTML = '&#9734';
+            chessboard.rows[7].cells[1].setAttribute("onclick", "easterEgg();");
+        };
 
-    };
-    chessboardBackground();
+        function easterEgg() {
+            chessboard.rows[3].cells[1].classList.add('c');
+            setTimeout(function() {
+                chessboard.rows[2].cells[1].classList.add('s1');
+                }, 500);
+            setTimeout(function() {
+                chessboard.rows[1].cells[1].classList.add('s2');
+                }, 1000);
+            setTimeout(function() {
+                chessboard.rows[3].cells[1].classList.remove('c');
+                }, 30000);
+            setTimeout(function() {
+               chessboard.rows[2].cells[1].classList.remove('s1');
+            }, 30500);
+            setTimeout(function() {
+                chessboard.rows[1].cells[1].classList.remove('s2');
+            }, 31000);
+        };
+
+        chessboardBackground();
 
 
-</script>
+        </script>
 
 </html>

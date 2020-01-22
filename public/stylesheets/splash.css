@@ -1,7 +1,45 @@
         /* -------------Stylesheet for the splash screen-------------- */
 
+
+
+
+        /*TODO list*/
+
+        /*Your code must include at least one instance of each of the following:*/
+
+        /*Pseudo-classes :hover and :active*/
+        /*Pseudo-elements ::after and ::before*/
+        /*Box model: margin, padding, border*/
+        /*At least two different position attributes, e.g. position:relative and position:absolute*/
+        /*At least one CSS animation and one CSS transition.*/
+
+        /*Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).*/
+
+
+        /*use media queries to alert players if their screen resolution is below a sufficiently large minimum.*/
+
+
+        /*Finally, offer a fullscreen mode of your game.*/
+
+        /* Cookies*/
+
+        /*Ensure that your code contains the necessary package.json file content to install/run the code,
+        i.e. it should be sufficient to take your myapp folder, and run npm install and npm start to start the server.
+        Any specific configuration parameters your code requires should be described in an accompanying README file.*/
+
+
+
+
+        /*:hover*/
+        /*:active*/
+        /*::after*/
+        /*::before*/
+
+
+
+
         body {
-            background-color: #eeeeee;
+            background-color: #EEEEEE;
             font-family: "Gadugi", sans-serif;
             padding: 0;
             margin: 0;
@@ -10,82 +48,215 @@
 
         #left {
             float: left;
-            width: 56.25vw;
+            width: 56vw;
             padding: 0;
             margin: 0;
             border: 0;
+            positon: relative;
         }
 
         #right {
             float: right;
-            width: 43.75vw;
+            width: 43vw;
+            height: 100vh;
             padding: 0;
             margin: 0;
             border: 0;
+            position: relative;
+            background-color: #EEEEEE;
         }
+
+
+        #empty {
+            height: 15vh;
+        }
+
+        #Content {
+            margin: 120px 12.5vh 0 12.5vh ;
+            height: 25vh;
+            text-align: center;
+        }
+
+
+        p::before {
+            content: "\"";
+        }
+
+
+        p::after {
+            content: "\" - The Makers, your gods?"
+        }
+
+
+        #Statistics {
+            text-align: left ;
+            margin: 20px 120px;
+            padding: 20px 20px;
+            /*border: 2px black solid;*/
+        }
+
 
         tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
         tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
-            background-color: black;
+            background-color: #111111;
+        }
+
+        tr.chessboard:nth-child(even) td.chessboard:nth-child(even),
+        tr.chessboard:nth-child(odd) td.chessboard:nth-child(odd) {
+            background-color: #EEEEEE;
         }
 
         table.chessboard {
             border: 0;
+            margin: 0;
+            padding: 0;
         }
 
 
         tr.chessboard, td.chessboard {
-            height: 11vh;
+            height: 10.5vh;
             color: red;
-            width: 11vw;
+            width: 6.25vw;
+            font-size: 45px;
+            font-family: Gadugi, sans-serif;
+            font-weight: bold;
+            text-align: center;
             padding: 0;
             margin: 0;
-            border: 0;
+            border: 2px solid #333;
 
         }
 
+        /*#Title {*/
+        /*    color: #121212;*/
+        /*    background-color: #CCCCCC;*/
+        /*    margin: auto;*/
+        /*    padding-top: 20px;*/
+        /*    padding-bottom: 20px;*/
+        /*    text-align: center;*/
+        /*    position: absolute;*/
 
+        /*}*/
 
-
-
-        /*
-        #Title {
-            color: #121212;
-            background-color: #CCCCCC;
-            margin: auto;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            text-align: center;
-
-        }
-
-        #Content {
-            width: 75%;
-            max-width: 800px;
-            align-content: center;
-            margin: 50px auto auto;
-        }
+        /*#Content {*/
+        /*    width: 75%;*/
+        /*    max-width: 800px;*/
+        /*    align-content: center;*/
+        /*    margin: 50px auto auto;*/
+        /*}*/
 
 
 
         #playButton {
-            font-size: 14px;
+            font-size: 36px;
             font-weight: bold;
             font-family: "Gadugi";
-            width: 250px;
-            height: 50px;
-            margin: 20px auto;
-            background-color: #CCCCCC;
-            border: 1px solid #121212;
+            color: red;
+            width: 400px;
+            height: 120px;
+            margin: 20px auto 80px;
+            background-color: #eeeeee;
+            border: 5px solid #121212;
             display: block;
 
         }
 
         #playButton:active {
-            background-color: #DDDDDD;
+            border-color: red;
+            background-color: #111111;
         }
 
         #playButton:hover {
-            background-color: #CDCDCD;
+            background-color: #000000;
         }
-        */
+
+
+        #easterEgg {
+            color: #eeeeee;
+        }
+
+        #easterEgg:hover {
+            animation: showSecretButton 2s;
+        }
+
+
+        #fullscreen {
+            /*float: right;*/
+            background-color: #EEEEEE;
+            border: 2px black solid;
+            margin: 5px 5px;
+            padding: 5px 5px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+        }
+
+
+        /* Animation Triggers */
+
+        .c {
+            animation: showSecret 5s linear;
+        }
+
+        .s1 {
+            animation: showSecret2 5s linear;
+        }
+
+        .s2 {
+            animation: showSecret 5s linear;
+        }
+
+
+        /* Animation*/
+
+        @keyframes showSecretButton {
+            from {
+                color: #EEEEEE;
+            }
+
+            to   {
+                color: red;
+            }
+        }
+
+        @keyframes showSecret {
+            0% {
+                background-color: #EEEEEE;
+            }
+            50% {
+                transform: rotate(15deg);
+                background-color: red;
+                color: black;
+            }
+            100% {
+                background-color: #EEEEEE;
+            }
+        }
+
+        @keyframes showSecret2 {
+            0% {
+                background-color: #111111;
+            }
+            50% {
+                transform: rotate(-15deg);
+                background-color: red;
+                color: black;
+            }
+            100% {
+                background-color: #111111;
+            }
+        }
+
+        /*@keyframes showSecret3 {*/
+        /*    0% {*/
+        /*        background-color: #EEEEEE;*/
+        /*    }*/
+        /*    75% {*/
+        /*        transform: rotate(15deg);*/
+        /*        background-color: red;*/
+        /*    }*/
+        /*    100% {*/
+        /*        background-color: #EEEEEE;*/
+        /*    }*/
+        /*}*/
