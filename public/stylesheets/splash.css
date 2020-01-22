@@ -1,12 +1,19 @@
         /* -------------Stylesheet for the splash screen-------------- */
 
-        body {
+        @media only screen and (max-width: 600px) {
+            body {
+              background-color: lightblue;
+            }
+          }
+
+
+         body {
             background-color: #eeeeee;
             font-family: "Gadugi", sans-serif;
             padding: 0;
             margin: 0;
             border: 0;
-        }
+        } 
 
         #left {
             float: left;

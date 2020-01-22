@@ -23,23 +23,17 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/play", indexRouter);
 
-
-app.use(function (req, res, next) {
+app.get("/", (req, res) => {
   var cookie = req.cookies.visitedCookie;
   if (cookie === undefined) {
     gameStatus.timesVisited = 1;
-    res.cookie('visitedCookie', gameStatus.timesVisited, { maxAge: 9000 });
-  } else { 
-    gameStatus.timesVisited = cookie + 1
-    res.clearCookie('visitedCookie');
-    res.cookie('visitedCookie', gameStatus.timesVisited, { maxAge: 9000 });
-  } 
-  next(); 
-});
+    res.cookie("visitedCookie", gameStatus.timesVisited, { maxAge: 9000 });
+  } else {
+    gameStatus.timesVisited = parseInt(cookie) + 1;
+    res.clearCookie("visitedCookie");
+    res.cookie("visitedCookie", gameStatus.timesVisited, { maxAge: 9000 });
+  }
 
-
-//TODO: move to routes/index
-app.get("/", (req, res) => {
   res.render("splash.ejs", {
     gamesInitialized: gameStatus.gamesInitialized,
     gamesCompleted: gameStatus.gamesCompleted,
@@ -47,6 +41,7 @@ app.get("/", (req, res) => {
     timesVisited: gameStatus.timesVisited
   });
 });
+
 
 var server = http.createServer(app);
 const wss = new websocket.Server({ server });
