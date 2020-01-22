@@ -1,58 +1,172 @@
-/* body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
-} */
+/*TODO use media queries to alert players if their screen resolution is below a sufficiently large minimum.*/
+
+
+/* TODO Cookies*/
+
 
 body {
-  background-color: #eeeeee;
+  background-color: #EEEEEE;
   font-family: "Gadugi", sans-serif;
   padding: 0;
   margin: 0;
 }
 
-#chessMenu {
-  /*padding: 0 auto;*/
+#gameBoard {
+  width: 600px;
+  height: 600px;
+  /*background-color: black;*/
+  margin: auto;
 }
+
+#statusbar {
+  right: 2vw;
+  bottom: 5vh;
+  width: 20vw;
+  height: 120px;
+  position: absolute;
+  border: 2px black solid;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
 
 #Title {
-  color: #121212;
-  background-color: #CCCCCC;
-  margin: auto;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  background-color: #777777;
+  font-size: 45px;
+  font-weight: bold;
+  color: red;
+  margin: auto auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px black solid;
   text-align: center;
-
 }
 
-#forfeitButton {
-  margin: 0 auto 50px auto;
+#Title::before {
+  content: "\"";
+}
+#Title::after {
+  content: "!\"";
+}
+
+
+#background {
+  background-color: #EEEEEE;
+  height: 95vh;
+  margin: 30px auto auto auto;
+  padding: 0;
+}
+
+
+
+
+/*#empty1 {*/
+/*  width: 200px;*/
+/*  height: 600px;*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 97px;*/
+/*  background-color: aqua;*/
+/*  border: 5px black solid;*/
+/*}*/
+
+/*#empty2 {*/
+/*  width: 200px;*/
+/*  height: 600px;*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  top: 97px;*/
+/*  background-color: aqua;*/
+/*  border: 5px black solid;*/
+/*}*/
+
+#MenuTray {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 82px 30px 0px 30px;
+  background-color: #DDDDDD;
+  color: red;
+  width: 120px;
+  height: 90vh;
+  padding: 0;
+  text-align: center;
+  border-left: 2px black solid;
+  border-right: 2px black solid;
+}
+
+/*table.Menu {*/
+/*  !*margin: auto 0;*!*/
+/*  padding: 0;*/
+/*}*/
+
+tr.Menu, td.Menu {
+  height: 60px;
+  padding: 0;
+  margin: 0;
+}
+
+.menuButton {
+  background-color: #DDDDDD;
+  border: 0;
+  width: 119px;
+  height: 60px;
+  /*margin: auto auto;*/
+  margin: 0;
+  padding: 0;
   font-size: 14px;
   font-weight: bold;
-  font-family: "Gadugi", sans-serif;
-  width: 250px;
-  height: 50px;
   position: relative;
-  display: block;
-  background-color: #CCCCCC;
-  border: 1px solid #121212;
+  right: 1px;
 }
+
+#shiftMenuButtons {
+  height: 25px;
+}
+
+.menuButton:hover {
+  animation: hoverMenuButton 2s;
+}
+
+.menuButton:active {
+  background-color: red;
+}
+
+
+@keyframes hoverMenuButton {
+  from {background-color: #DDDDDD;}
+  to {background-color: red;}
+}
+
+/*#forfeitButton {*/
+/*  margin: 0 auto 50px auto;*/
+/*  font-size: 14px;*/
+/*  font-weight: bold;*/
+/*  font-family: "Gadugi", sans-serif;*/
+/*  width: 250px;*/
+/*  height: 50px;*/
+/*  position: relative;*/
+/*  display: block;*/
+/*  background-color: #CCCCCC;*/
+/*  border: 1px solid #121212;*/
+/*}*/
+
 
 
 table.chessboard {
   margin: 80px auto;
-  background-color: #000000;
-  border-size: 0;
+  /*background-color: #000000;*/
+  /*border-size: 0;*/
 
-  border-collapse: collapse; /* */
+  /*border-collapse: collapse; !* *!*/
 
 }
 
-td.chessboard {
 
+
+td.chessboard {
   text-align: center;
   vertical-align: middle;
   width: 70px; height: 70px;
@@ -68,3 +182,66 @@ tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
 tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
    background: #777777;
  }
+
+tr.chessboard:nth-child(even) td.chessboard:nth-child(even),
+tr.chessboard:nth-child(odd) td.chessboard:nth-child(odd) {
+  background: #EEEEEE;
+}
+
+
+.lightning {
+  animation: lightning 5s linear;
+}
+
+.lightningButton {
+  visibility: hidden;
+  animation: lightning 5s linear;
+}
+
+
+@keyframes lightning {
+  0% {
+    background-color: red;
+    /*color: red;*/
+  }
+  10% {
+    background-color: blue;
+    /*color: blue;*/
+  }
+  20% {
+    background-color: palegoldenrod;
+    /*color: paleturquoise;*/
+  }
+  30% {
+    background-color: green;
+    /*color: green;*/
+  }
+  40% {
+    background-color: yellow;
+    /*color: yellow;*/
+  }
+  50% {
+    background-color: purple;
+    /*color: purple;*/
+  }
+  60% {
+    background-color: aqua;
+    /*color: aqua;*/
+  }
+  70% {
+    background-color: greenyellow;
+    /*color: greenyellow;*/
+  }
+  80% {
+    background-color: deeppink;
+    /*color: deeppink;*/
+  }
+  90% {
+    background-color: paleturquoise;
+    /*color: paleturquoise;*/
+  }
+  100% {
+    background-color: slateblue;
+    /*color: slateblue;*/
+  }
+}

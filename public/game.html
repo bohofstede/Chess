@@ -19,11 +19,93 @@
 
 </head>
 
-<body>
-        <table id="chessboard"></table>
+<body id="bodyId">
 
-        <div id="statusbar"/>
+    <div id="Title">Stupid Standard Chess</div>
 
+    <div id="background">
+<!--    <div id="empty1">-->
+        <div id="MenuTray">
+            <table class="Menu">
+                <tr id="shiftMenuButtons"><td></td></tr>
+                <tr class="Menu"><td class="Menu">
+                    <button class="menuButton" onclick="window.location.href = 'https://previews.123rf.com/images/valera197615/valera1976151903/valera197615190302919/124403151-you-suck-stamp-on-white-background-sign-label-sticker.jpg';">
+                        Forfeit
+                    </button>
+                </td></tr>
+                <tr class="Menu"><td class="Menu">
+                    <button class="menuButton" onclick="lightning();">
+                        Party Lightning
+                    </button>
+                </td></tr>
+                <tr class="Menu"><td class="Menu">
+                    <button class="menuButton" onclick="
+                    let x = document.getElementById('bodyId');
+                    if (x.requestFullscreen) {
+                        x.requestFullscreen();
+                      } else if (x.mozRequestFullScreen) { /* Firefox */
+                        x.mozRequestFullScreen();
+                      } else if (x.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                        x.webkitRequestFullscreen();
+                      } else if (x.msRequestFullscreen) { /* IE/Edge */
+                        x.msRequestFullscreen();
+                      }">
+                        Fullscreen
+                    </button>
+                </td></tr>
+            </table>
+        </div>
+<!--        </div>-->
+
+        <div id="gameBoard">
+            <table id="chessboard"></table>
+        </div>
+    <!--    <div id="empty2"></div>-->
+
+        <div id="statusbar">[Console Messages will appear here]</div>
+    </div>
 </body>
+<script>
+    function lightning() {
+        let lightning1 = document.getElementById("background")
+        lightning1.setAttribute('class', 'lightning');
+        setTimeout(function() {
+            lightning1.classList.remove('lightning');
+        }, 30000);
+        let lightning2 = document.getElementById("bodyId")
+        lightning2.setAttribute('class', 'lightning');
+        setTimeout(function() {
+            lightning2.classList.remove('lightning');
+        }, 30000);
+        // let lightning3 = document.getElementById("Title")
+        // setTimeout(function() {
+        //     lightning3.setAttribute('class', 'lightning');
+        // }, 100);
+        // setTimeout(function() {
+        //     lightning3.classList.remove('lightning');
+        // }, 30000);
+        // let lightning4 = document.getElementById("MenuTray")
+        // setTimeout(function() {
+        //     lightning4.setAttribute('class', 'lightning');
+        // }, 150);
+        // setTimeout(function() {
+        //     lightning4.classList.remove('lightning');
+        // }, 30000);
+        // let lightning5 = document.getElementsByClassName("menuButton");
+        // setTimeout(function() {
+        //     lightning5.classList.add('class', 'lightningButton');
+        // }, 150);
+        // setTimeout(function() {
+        //     lightning5.classList.remove('lightningButton');
+        // }, 30000);
+        // let lightning6 = document.getElementsByClassName("Menu");
+        // setTimeout(function() {
+        //     lightning6.classList.add('class', 'lightning');
+        // }, 150);
+        // setTimeout(function() {
+        //     lightning6.classList.remove('lightning');
+        // }, 30000);
 
+    };
+</script>
 </html>

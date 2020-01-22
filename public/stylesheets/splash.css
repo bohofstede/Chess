@@ -16,12 +16,12 @@
         /*Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).*/
 
 
-        /*use media queries to alert players if their screen resolution is below a sufficiently large minimum.*/
+        /*TODO use media queries to alert players if their screen resolution is below a sufficiently large minimum.*/
 
 
         /*Finally, offer a fullscreen mode of your game.*/
 
-        /* Cookies*/
+        /* TODO Cookies*/
 
         /*Ensure that your code contains the necessary package.json file content to install/run the code,
         i.e. it should be sufficient to take your myapp folder, and run npm install and npm start to start the server.
@@ -44,6 +44,10 @@
             padding: 0;
             margin: 0;
             border: 0;
+        }
+
+        #body:fullscreen {
+            background-color: black;
         }
 
         #left {
@@ -78,6 +82,7 @@
         }
 
 
+
         p::before {
             content: "\"";
         }
@@ -86,7 +91,6 @@
         p::after {
             content: "\" - The Makers, your gods?"
         }
-
 
         #Statistics {
             text-align: left ;
@@ -260,3 +264,8 @@
         /*        background-color: #EEEEEE;*/
         /*    }*/
         /*}*/
+
+
+
+
+
