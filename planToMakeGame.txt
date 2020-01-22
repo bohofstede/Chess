@@ -1,0 +1,27 @@
+Plan of Action;
+
+1) We need to seperate the logic of the chessboard and that of the game logic.
+2) The board will only receive the valid moves and then allow the user to only drag drop 
+3) Messages will then be sent to the server who will then send it to the other player
+4) The play button is interactive and will allow the player to access the game
+5) The pieces will all be interactive and allow for drag and drop
+
+
+Design Patterns
+1) Basic constructor
+
+
+WebSocket Messages
+
+Game-Over
+Game-Won-BY
+GAME-ABORTED
+PLAYER-WHITE
+PLAYER-BLACK
+MOVE
+
+
+  
+  
+  
+  
